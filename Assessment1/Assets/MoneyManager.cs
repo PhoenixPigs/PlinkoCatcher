@@ -14,6 +14,7 @@ public class MoneyManager : MonoBehaviour
 
     public int catcherSizeLevel;
     [SerializeField] TMP_Text MoneyText;
+    [SerializeField] TMP_Text ballValueText;
 
 
     // Update is called once per frame
@@ -28,6 +29,6 @@ public class MoneyManager : MonoBehaviour
             ballValue = ballValueLevel * 1.1f;
         }
         MoneyText.text = "$" + currentMoney;
-
+        ballValueText.text = "$" + ballValue;
     }
 }
