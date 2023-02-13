@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-    [SerializeField] float BallSpawnSpeed;
+    public float BallSpawnSpeed;
     [SerializeField] GameObject Ball;
     //[SerializeField] ArrayList Spawns;
     [SerializeField] Transform Spawn;

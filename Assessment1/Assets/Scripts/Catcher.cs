@@ -13,6 +13,7 @@ public class Catcher : MonoBehaviour
         {
             Destroy(collision.gameObject);
             moneyManager.currentMoney += moneyManager.ballValue;
+            moneyManager.currentMoney = Mathf.Round(moneyManager.currentMoney * 100f) / 100f;
         }
     }
 
