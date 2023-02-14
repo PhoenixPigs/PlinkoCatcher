@@ -8,6 +8,11 @@ public class BallDestroy : MonoBehaviour
 
     public GameObject deathParticleCurrent;
     //public  rotate;
+    public Combo _combo;
+    private void Start()
+    {
+        _combo = FindObjectOfType<Combo>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,6 +24,7 @@ public class BallDestroy : MonoBehaviour
             Instantiate(deathParticle, spawnLocation, transform.rotation);
             //deathParticleCurrent.transform.rotation.y += 90;
             Destroy(other.gameObject);
+            _combo.comboCount = 0;
         }
     }
 }
