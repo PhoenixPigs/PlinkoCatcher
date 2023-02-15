@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Unity.UI;
 
 public class Combo : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Combo : MonoBehaviour
     public TMP_Text comboText2;
     public bool comboActive;
 
+    public GameObject Splat;
+    public Animator comboBounce;
+    public Animator splatAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,16 @@ public class Combo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (comboCount >= 10)
+        {
+            Splat.gameObject.SetActive(true);
+            splatAnim.SetBool("Splat", true);
+        }
+        else
+        {
+            splatAnim.SetBool("Splat", false);
+            Splat.gameObject.SetActive(false);
+        }
 
 
         if (comboCount == 10 && comboActive == false)
@@ -52,7 +67,10 @@ public class Combo : MonoBehaviour
 
         comboText.text = "COMBO " + comboCount + "x";
         comboText2.text = "COMBO " + comboCount + "x";
+
     }
+
+
 
     void ComboBonus()
     {

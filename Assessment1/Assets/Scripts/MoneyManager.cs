@@ -44,11 +44,14 @@ public class MoneyManager : MonoBehaviour
     [SerializeField] TMP_Text catcherText;
     [SerializeField] TMP_Text catcherPriceText;
 
-    public float currentValue;
+    public float currentPrice;
+    public float currentSpeed;
+
+    //public float currentValue;
     private void Start()
     {
         ballValueLevel = 1;
-        currentValue = 1;
+        //currentValue = 1;
         catcherLevel = 1;
         Instantiate(Catcher1, catcherSpawn.position, catcherSpawn.rotation);
         Catcher1 = GameObject.FindGameObjectWithTag("Catcher");
@@ -56,6 +59,20 @@ public class MoneyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_combo.comboActive == false)
+        {
+        currentPrice = ballValuePrice;
+        }
+        else
+        {
+            currentPrice = ballValuePrice / 1.5f;
+        }
+
+        if (_ballSpawner.superActivated == false)
+        {
+            
+        }
+        currentSpeed = 2 * (spawnSpeedLevel * 0.1f);
         ballValuePrice = ballValue * 10.5f;
         spawnPrice = 30 * (spawnSpeedLevel + 1);
         if (catcherLevel == 1)
@@ -75,7 +92,7 @@ public class MoneyManager : MonoBehaviour
         MoneyText.text = "$" + currentMoney;
 
         ballValueText.text = "$" + ballValue;
-        ballValueUpgradeText.text = "$" + ballValuePrice;
+        ballValueUpgradeText.text = "$" + currentPrice;
 
         spawnText.text = _ballSpawner.BallSpawnSpeed + "'s";
         spawnPriceText.text = "$" + spawnPrice;
@@ -88,15 +105,15 @@ public class MoneyManager : MonoBehaviour
     }
     public void UpgradeValue()
         {
-            if (ballValuePrice < currentMoney)
+            if (currentPrice < currentMoney)
             {
-            if (_combo.comboActive == true)
-            {
-                ballValue /= 1.5f;
-            }
+                if (_combo.comboActive == true)
+                {
+                    ballValue /= 1.5f;
+                }
                 ballValue += (ballValueLevel * 0.1f) ;
                 ballValueUpgradeAmountText.text = "Upgrade ball value $" + ballValueLevel * 0.1f;
-                currentMoney -= ballValuePrice;
+                currentMoney -= currentPrice;
                 currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
                 ballValue = Mathf.Round(ballValue * 100f) / 100f;
                 ballValueLevel++;
@@ -105,7 +122,6 @@ public class MoneyManager : MonoBehaviour
                 {
                     ballValue *= 1.5f;
                 }
-                ballValue = Mathf.Round(ballValue * 100f) / 100f;
             }
         }
     public void UpgradeSpeed()

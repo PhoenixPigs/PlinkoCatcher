@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Animations;
 
 public class Catcher : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class Catcher : MonoBehaviour
     public float clampXLeft;
     public float clampXRight;
     public Combo _combo;
+    public BallSpawner _ballSpawner;
 
     public void Awake()
     {
         moneyManager = FindObjectOfType<MoneyManager>();
         _combo = FindObjectOfType<Combo>();
+        _ballSpawner = FindObjectOfType<BallSpawner>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -25,7 +28,30 @@ public class Catcher : MonoBehaviour
             moneyManager.currentMoney += moneyManager.ballValue;
             moneyManager.currentMoney = Mathf.Round(moneyManager.currentMoney * 100f) / 100f;
             _combo.comboCount++;
+            BounceBool();
         }
+        if (collision.gameObject.tag == "SuperBall")
+        {
+            Destroy(collision.gameObject);
+            moneyManager.currentMoney += moneyManager.ballValue;
+            moneyManager.currentMoney = Mathf.Round(moneyManager.currentMoney * 100f) / 100f;
+            _combo.comboCount++;
+            BounceBool();
+            _ballSpawner.superActivated = true;
+        }
+    }
+    void BounceBool()
+    {
+        _combo.comboBounce.SetTrigger("E");
+        //_combo.comboBounce.ResetTrigger("E");
+
+
+    }
+
+    IEnumerator BounceWait()
+    {
+        yield return new WaitForSeconds(1);
+
     }
     // Update is called once per frame
     void Update()
