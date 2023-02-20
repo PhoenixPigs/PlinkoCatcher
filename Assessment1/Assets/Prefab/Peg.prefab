@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PegOn: {fileID: 2100000, guid: 426e233c49c6dfb4dacf79cb1cad8476, type: 2}
+  SuperPegOn: {fileID: 2100000, guid: afcdc7e03d8ca6c408c31fa718306e77, type: 2}
   PegOff: {fileID: 2100000, guid: 51b3068f6310fbe4e92d8a657396445d, type: 2}
   PegRenderer: {fileID: 0}
   PegEnabled: 0

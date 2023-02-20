@@ -65,8 +65,18 @@ public class Combo : MonoBehaviour
             _catcher = FindObjectOfType<Catcher>();
         }
 
+
+        if (_catcher.rumble == false)
+        {
         comboText.text = "COMBO " + comboCount + "x";
         comboText2.text = "COMBO " + comboCount + "x";
+        }
+
+        if (_catcher.rumble == true)
+        {
+            comboText.text = "SUPER COMBO";
+            comboText2.text = "SUPER COMBO";
+        }
 
     }
 

@@ -51,6 +51,7 @@ public class MoneyManager : MonoBehaviour
     private void Start()
     {
         ballValueLevel = 1;
+        //spawnSpeedLevel = 1;
         //currentValue = 1;
         catcherLevel = 1;
         Instantiate(Catcher1, catcherSpawn.position, catcherSpawn.rotation);
@@ -72,7 +73,7 @@ public class MoneyManager : MonoBehaviour
         {
             
         }
-        currentSpeed = 2 * (spawnSpeedLevel * 0.1f);
+        currentSpeed = 2 - (spawnSpeedLevel * 0.1f);
         ballValuePrice = ballValue * 10.5f;
         spawnPrice = 30 * (spawnSpeedLevel + 1);
         if (catcherLevel == 1)
