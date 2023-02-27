@@ -23,9 +23,6 @@ public class BallSpawner : MonoBehaviour
         Activated = true;
         Debug.Log("Hi");
         StartCoroutine(SuperBallCooldown());
-        SpawnTarget = Random.Range(6f, -6f);
-        Spawn.position = new Vector3(SpawnTarget, Spawn.position.y, Spawn.position.z);
-        Instantiate(SuperBall, Spawn.position, Spawn.rotation);
     }
     // Update is called once per frame
     void Update()

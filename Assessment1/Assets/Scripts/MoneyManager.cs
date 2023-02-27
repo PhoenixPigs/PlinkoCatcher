@@ -33,6 +33,11 @@ public class MoneyManager : MonoBehaviour
     public GameObject Catcher1;
     public GameObject Catcher2;
     public GameObject Catcher3;
+
+    public GameObject Catcher12;
+    public GameObject Catcher22;
+    public GameObject Catcher32;
+
     public int catcherLevel;
     public int catcherSize;
     public int catcherPrice;
@@ -47,47 +52,70 @@ public class MoneyManager : MonoBehaviour
     public float currentPrice;
     public float currentSpeed;
 
+    public int prestigeLevel;
+    public float prestigeCost;
+    public TMP_Text prestigeCostText;
+    public TMP_Text prestigeLevelText;
+    public Button prestigeUpgrade;
+
+    public float prestigeMultiplier;
+
+
     //public float currentValue;
     private void Start()
     {
         ballValueLevel = 1;
+        prestigeLevel = 0;
         //spawnSpeedLevel = 1;
         //currentValue = 1;
         catcherLevel = 1;
         Instantiate(Catcher1, catcherSpawn.position, catcherSpawn.rotation);
-        Catcher1 = GameObject.FindGameObjectWithTag("Catcher");
+
+
     }
     // Update is called once per frame
     void Update()
     {
         if (_combo.comboActive == false)
         {
-        currentPrice = ballValuePrice;
+            currentPrice = ballValuePrice;
         }
         else
         {
             currentPrice = ballValuePrice / 1.5f;
         }
+        prestigeLevelText.text = "PRESTIGE: " + prestigeLevel;
+        prestigeCost = 2000 * (prestigeLevel + 1);
+        prestigeCostText.text = "$" + prestigeCost;
+        
 
-        if (_ballSpawner.superActivated == false)
-        {
-            
-        }
+
         currentSpeed = 2 - (spawnSpeedLevel * 0.1f);
         ballValuePrice = ballValue * 10.5f;
         spawnPrice = 30 * (spawnSpeedLevel + 1);
+
+            if (ballValueLevel == 1)
+            {
+                ballValueUpgradeAmountText.text = "Upgrade ball value $" + 0.1;
+            }
+            if (ballValueLevel >= 2)
+            {
+            ballValueUpgradeAmountText.text = "Upgrade ball value $" + ballValueLevel * 0.1f;
+            }
+
         if (catcherLevel == 1)
         {
             catcherPrice = 500;
+            Catcher12 = GameObject.FindGameObjectWithTag("Catcher");
         }
         if (catcherLevel == 2)
         {
             catcherPrice = 10000;
-            Catcher2 = GameObject.FindGameObjectWithTag("Catcher");
+            Catcher22 = GameObject.FindGameObjectWithTag("Catcher");
         }
         if (catcherLevel == 3)
         {
-            Catcher3 = GameObject.FindGameObjectWithTag("Catcher");
+            Catcher32 = GameObject.FindGameObjectWithTag("Catcher");
         }
 
         MoneyText.text = "$" + currentMoney;
@@ -104,27 +132,60 @@ public class MoneyManager : MonoBehaviour
 
 
     }
-    public void UpgradeValue()
+    public void Prestige()
+    {
+        if (prestigeCost < currentMoney)
         {
-            if (currentPrice < currentMoney)
+            prestigeLevel++;
+            ballValueLevel = 1;
+            ballValue = 1;
+            prestigeMultiplier = (0.15f * prestigeLevel) + 1;
+            ballValue *= prestigeMultiplier;
+            spawnSpeedLevel = 0;
+            _ballSpawner.BallSpawnSpeed = 2;
+            currentMoney = 0;
+            if (catcherLevel >= 2)
             {
-                if (_combo.comboActive == true)
-                {
-                    ballValue /= 1.5f;
-                }
-                ballValue += (ballValueLevel * 0.1f) ;
-                ballValueUpgradeAmountText.text = "Upgrade ball value $" + ballValueLevel * 0.1f;
-                currentMoney -= currentPrice;
-                currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
-                ballValue = Mathf.Round(ballValue * 100f) / 100f;
-                ballValueLevel++;
-
-                if (_combo.comboActive == true)
-                {
-                    ballValue *= 1.5f;
-                }
+                Instantiate(Catcher1, catcherSpawn.position, catcherSpawn.rotation);
+                Destroy(Catcher22);
+                Destroy(Catcher32);
+                catcherLevel = 1;
+                Catcher12 = GameObject.FindGameObjectWithTag("Catcher");
             }
         }
+    }
+
+    public void UpgradeValue()
+    {
+        if (currentPrice < currentMoney)
+        {
+            if (_combo.comboActive == true)
+            {
+                ballValue /= 1.5f;
+            }
+            if (prestigeLevel >= 1)
+            {
+                ballValue /= prestigeMultiplier;
+            }
+
+            ballValue += (ballValueLevel * 0.1f);
+
+
+            currentMoney -= currentPrice;
+            //currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
+            //ballValue = Mathf.Round(ballValue * 100f) / 100f;
+            ballValueLevel++;
+
+            if (prestigeLevel >= 1)
+            {
+                ballValue *= prestigeMultiplier;
+            }
+            if (_combo.comboActive == true)
+            {
+                ballValue *= 1.5f;
+            }
+        }
+    }
     public void UpgradeSpeed()
     {
         if (_ballSpawner.BallSpawnSpeed > 0.1f && spawnPrice < currentMoney)
@@ -145,8 +206,7 @@ public class MoneyManager : MonoBehaviour
             {
                 Instantiate(Catcher3, catcherSpawn.position, catcherSpawn.rotation);
                 currentMoney -= catcherPrice;
-                Destroy(Catcher2);
-                Catcher3 = GameObject.FindGameObjectWithTag("Catcher");
+                Destroy(Catcher22);
                 currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
                 catcherLevel++;
             }
@@ -154,10 +214,10 @@ public class MoneyManager : MonoBehaviour
             {
                 Instantiate(Catcher2, catcherSpawn.position, catcherSpawn.rotation);
                 currentMoney -= catcherPrice;
-                Destroy(Catcher1);
+                Destroy(Catcher12);
                 currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
                 catcherLevel++;
             }
         }
-    }    
+    }
 }

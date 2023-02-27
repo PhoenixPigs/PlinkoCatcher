@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallDestroy : MonoBehaviour
@@ -11,9 +12,11 @@ public class BallDestroy : MonoBehaviour
     public GameObject deathParticleCurrent;
     //public  rotate;
     public Combo _combo;
+    public List<GameObject> _clean;
     private void Start()
     {
         _combo = FindObjectOfType<Combo>();
+        List<GameObject> _clean = new List<GameObject>();
     }
 
     private void Update()
@@ -37,17 +40,31 @@ public class BallDestroy : MonoBehaviour
 
         if (other.gameObject.tag == "Ball")
         {
+
             //Vector3 spawnLocation = new Vector3(other.gameObject.transform.position.x, deathParticle.gameObject.transform.position.y + 10, deathParticle.gameObject.transform.position.z);
             Vector3 spawnLocation = new Vector3(other.gameObject.transform.position.x, deathParticle.gameObject.transform.position.y - 0.4f, deathParticle.gameObject.transform.position.z + 1);
             //Instantiate(deathParticle, spawnLocation, Quaternion.Euler(Vector3.up));
-            Instantiate(deathParticle, spawnLocation, transform.rotation);
+            deathParticleCurrent = Instantiate(deathParticle, spawnLocation, transform.rotation);
+            _clean.Add(deathParticleCurrent);
             //deathParticleCurrent.transform.rotation.y += 90;
             Destroy(other.gameObject);
+
             if (_catcher.rumble == false)
             {
                 Debug.Log("False");
             _combo.comboCount = 0;
             }
+            StartCoroutine(ParticleDestroy());
+        }
+
+    }
+    IEnumerator ParticleDestroy()
+    {
+        yield return new WaitForSeconds(3);
+        
+        foreach (GameObject i in _clean)
+        {
+            Destroy(i);
         }
     }
 }
