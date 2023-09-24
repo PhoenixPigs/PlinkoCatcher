@@ -9,55 +9,58 @@ using System;
 
 public class MoneyManager : MonoBehaviour
 {
+    [Header("Money")]
     public float currentMoney;
+    [SerializeField] TMP_Text MoneyText;
 
+    [Header("Ball Value")]
     public float ballValue;
     public int ballValueLevel;
     public float ballValuePrice;
-    public Button ballValueUpgrade;
+    public float currentPrice;
 
-    [SerializeField] TMP_Text MoneyText;
+    [Header("Ball value text")]
     [SerializeField] TMP_Text ballValueText;
     [SerializeField] TMP_Text ballValueUpgradeText;
     [SerializeField] TMP_Text ballValueUpgradeAmountText;
 
+    [Header("Spawn Speed")]
     public BallSpawner _ballSpawner;
     public int spawnSpeedLevel;
     public float spawnPrice;
-    public Button spawnSpeedUpgrade;
+    public float currentSpeed;
 
+    [Header("Spawn Speed text")]
     [SerializeField] TMP_Text spawnText;
     [SerializeField] TMP_Text spawnPriceText;
 
+    [Header("Catcher")]
     public Transform catcherSpawn;
     public GameObject Catcher1;
     public GameObject Catcher2;
     public GameObject Catcher3;
-
     public GameObject Catcher12;
     public GameObject Catcher22;
     public GameObject Catcher32;
-
     public int catcherLevel;
     public int catcherSize;
     public int catcherPrice;
-    public Button catcherSizeUpgrade;
 
+
+    [Header("Catcher text")]
+    [SerializeField] TMP_Text catcherText;
+    [SerializeField] TMP_Text catcherPriceText;
+    
+    [Header("Combo")]
     public Combo _combo;
 
 
-    [SerializeField] TMP_Text catcherText;
-    [SerializeField] TMP_Text catcherPriceText;
-
-    public float currentPrice;
-    public float currentSpeed;
-
+    [Header("Prestige")]
     public int prestigeLevel;
     public float prestigeCost;
     public TMP_Text prestigeCostText;
     public TMP_Text prestigeLevelText;
     public Button prestigeUpgrade;
-
     public float prestigeMultiplier;
 
 
@@ -96,11 +99,11 @@ public class MoneyManager : MonoBehaviour
 
             if (ballValueLevel == 1)
             {
-                ballValueUpgradeAmountText.text = "Upgrade ball value $" + 0.1;
+                ballValueUpgradeAmountText.text = "+ $" + 0.1;
             }
             if (ballValueLevel >= 2)
             {
-            ballValueUpgradeAmountText.text = "Upgrade ball value $" + ballValueLevel * 0.1f;
+            ballValueUpgradeAmountText.text = "+ $" + ballValueLevel * 0.1f;
             }
 
         if (catcherLevel == 1)
@@ -121,7 +124,7 @@ public class MoneyManager : MonoBehaviour
         MoneyText.text = "$" + currentMoney;
 
         ballValueText.text = "$" + ballValue;
-        ballValueUpgradeText.text = "$" + currentPrice;
+        ballValueUpgradeText.text = "Cost : $" + currentPrice;
 
         spawnText.text = _ballSpawner.BallSpawnSpeed + "'s";
         spawnPriceText.text = "$" + spawnPrice;

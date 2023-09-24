@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/test.uss?fileID=7433441132597879392&amp;guid=21662b5467b016444bf597a4bcaa3813&amp;type=3#test" />
+    <ui:GroupBox style="height: 488px;" />
+</ui:UXML>
