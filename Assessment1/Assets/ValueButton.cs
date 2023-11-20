@@ -1,41 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ValueButton : MonoBehaviour
 {
-    [SerializeField] Animator button;
+    [SerializeField] Button value;
     public MoneyManager _mm;
+    [SerializeField] Animator test;
 
     private void Start()
     {
-        button = GetComponent<Animator>();
+        value = GetComponent<Button>();
     }
 
     private void Update()
     {
         if (_mm.currentMoney > _mm.currentPrice)
         {
-            button.SetBool("Disable", false);
+            value.interactable = false;
         }
         if (_mm.currentMoney < _mm.currentPrice)
         {
-            button.SetBool("Disable", true);
+            test.SetTrigger("Disabled");
+            value.interactable = true;
         }
-    }
-
-    public void hover()
-    {
-        button.SetTrigger("Hover");
-        button.SetBool("UnHover", true);
-    }
-    public void unhover()
-    {
-        button.SetBool("UnHover", false);
-    }
-    public void click()
-    {
-        button.SetTrigger("Click");
-        button.SetTrigger("UnHover");
     }
 }

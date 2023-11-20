@@ -1,41 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpeedButton : MonoBehaviour
 {
-    [SerializeField] Animator button;
+    [SerializeField] Button Speed;
     public MoneyManager _mm;
 
     private void Start()
     {
-        button = GetComponent<Animator>();
+        Speed = GetComponent<Button>();
     }
 
     private void Update()
     {
         if (_mm.currentMoney > _mm.spawnPrice)
         {
-            button.SetBool("Disable", false);
+            Speed.interactable = false;
         }
         if (_mm.currentMoney < _mm.spawnPrice)
         {
-            button.SetBool("Disable", true);
+            Speed.interactable = true;
         }
-    }
-
-    public void hover2()
-    {
-        button.SetTrigger("Hover");
-        button.SetBool("UnHover", true);
-    }
-    public void unhover2()
-    {
-        button.SetBool("UnHover", false);
-    }
-    public void click2()
-    {
-        button.SetTrigger("Click");
-        button.SetTrigger("UnHover");
     }
 }

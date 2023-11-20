@@ -1,41 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CatcherButton : MonoBehaviour
 {
-    [SerializeField] Animator button;
+    [SerializeField] Button catcher;
     public MoneyManager _mm;
 
     private void Start()
     {
-        button = GetComponent<Animator>();
+        catcher = GetComponent<Button>();
     }
 
     private void Update()
     {
         if (_mm.currentMoney > _mm.catcherPrice)
         {
-            button.SetBool("Disable", false);
+            catcher.interactable = false;
         }
         if (_mm.currentMoney < _mm.catcherPrice)
         {
-            button.SetBool("Disable", true);
+            catcher.interactable = true;
         }
-    }
-
-    public void hover3()
-    {
-        button.SetTrigger("Hover");
-        button.SetBool("UnHover", true);
-    }
-    public void unhover3()
-    {
-        button.SetBool("UnHover", false);
-    }
-    public void click3()
-    {
-        button.SetTrigger("Click");
-        button.SetTrigger("UnHover");
     }
 }
