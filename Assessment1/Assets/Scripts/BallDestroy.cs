@@ -60,7 +60,7 @@ public class BallDestroy : MonoBehaviour
     }
     IEnumerator ParticleDestroy()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5f);
         
         foreach (GameObject i in _clean)
         {
