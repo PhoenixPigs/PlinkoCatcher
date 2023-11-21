@@ -18,12 +18,12 @@ public class ValueButton : MonoBehaviour
     {
         if (_mm.currentMoney > _mm.currentPrice)
         {
-            value.interactable = false;
+            value.interactable = true;
         }
         if (_mm.currentMoney < _mm.currentPrice)
         {
             test.SetTrigger("Disabled");
-            value.interactable = true;
+            value.interactable = false;
         }
     }
 }
