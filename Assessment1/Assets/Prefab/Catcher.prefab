@@ -261,6 +261,9 @@ MonoBehaviour:
   clampXLeft: -5.75
   clampXRight: 5.75
   _combo: {fileID: 0}
+  _ballSpawner: {fileID: 0}
+  rumble: 0
+  pointPopUp: {fileID: 5438948364304949739, guid: b443931f6a0c50942b05a7d59ea7d52e, type: 3}
 --- !u!1 &7182466880689524703
 GameObject:
   m_ObjectHideFlags: 0

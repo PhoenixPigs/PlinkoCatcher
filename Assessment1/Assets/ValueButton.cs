@@ -5,25 +5,23 @@ using UnityEngine.UI;
 
 public class ValueButton : MonoBehaviour
 {
-    [SerializeField] Button value;
+    [SerializeField] Button button;
     public MoneyManager _mm;
-    [SerializeField] Animator test;
 
     private void Start()
     {
-        value = GetComponent<Button>();
+
     }
 
     private void Update()
     {
         if (_mm.currentMoney > _mm.currentPrice)
         {
-            value.interactable = true;
+            button.interactable = true;
         }
         if (_mm.currentMoney < _mm.currentPrice)
         {
-            test.SetTrigger("Disabled");
-            value.interactable = false;
+            button.interactable = false;
         }
     }
 }

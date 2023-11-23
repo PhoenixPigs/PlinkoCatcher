@@ -9,6 +9,7 @@ public class PegGlow : MonoBehaviour
     public Material PegOff;
     public MeshRenderer PegRenderer;
     public bool PegEnabled = false;
+    [SerializeField] AudioSource pop;
     [SerializeField] float PegDelay;
 
     private void OnCollisionEnter(Collision Other)
@@ -28,6 +29,7 @@ public class PegGlow : MonoBehaviour
     {
         PegRenderer.material = PegOn;
         PegEnabled = true;
+        pop.Play();
         yield return new WaitForSeconds(PegDelay);
         PegRenderer.material = PegOff;
         PegEnabled = false;
@@ -36,6 +38,7 @@ public class PegGlow : MonoBehaviour
     {
         PegRenderer.material = SuperPegOn;
         PegEnabled = true;
+        pop.Play();
         yield return new WaitForSeconds(PegDelay);
         PegRenderer.material = PegOff;
         PegEnabled = false;

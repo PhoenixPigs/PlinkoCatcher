@@ -5,23 +5,24 @@ using UnityEngine.UI;
 
 public class SpeedButton : MonoBehaviour
 {
-    [SerializeField] Button Speed;
+    [SerializeField] Button button;
     public MoneyManager _mm;
 
     private void Start()
     {
-        Speed = GetComponent<Button>();
+
     }
 
     private void Update()
     {
         if (_mm.currentMoney > _mm.spawnPrice)
         {
-            Speed.interactable = false;
+            button.interactable = true;
         }
         if (_mm.currentMoney < _mm.spawnPrice)
         {
-            Speed.interactable = true;
+            button.interactable = false;
         }
     }
 }
+

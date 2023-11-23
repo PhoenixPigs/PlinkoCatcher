@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class CatcherButton : MonoBehaviour
 {
-    [SerializeField] Button catcher;
+    [SerializeField] Button button;
     public MoneyManager _mm;
 
     private void Start()
     {
-        catcher = GetComponent<Button>();
+
     }
 
     private void Update()
     {
         if (_mm.currentMoney > _mm.catcherPrice)
         {
-            catcher.interactable = false;
+            button.interactable = true;
         }
         if (_mm.currentMoney < _mm.catcherPrice)
         {
-            catcher.interactable = true;
+            button.interactable = false;
         }
     }
 }

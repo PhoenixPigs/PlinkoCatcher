@@ -13,6 +13,7 @@ public class Catcher : MonoBehaviour
     public Combo _combo;
     public BallSpawner _ballSpawner;
     public bool rumble = false;
+    [SerializeField] GameObject pointPopUp;
 
     public void Awake()
     {
@@ -28,6 +29,7 @@ public class Catcher : MonoBehaviour
             Destroy(collision.gameObject);
             moneyManager.currentMoney += moneyManager.ballValue;
             moneyManager.currentMoney = Mathf.Round(moneyManager.currentMoney * 100f) / 100f;
+            Instantiate(pointPopUp, gameObject.transform.position, gameObject.transform.rotation);
             if (rumble == false)
             {
             _combo.comboCount++;
@@ -39,6 +41,7 @@ public class Catcher : MonoBehaviour
             Destroy(collision.gameObject);
             moneyManager.currentMoney += moneyManager.ballValue;
             moneyManager.currentMoney = Mathf.Round(moneyManager.currentMoney * 100f) / 100f;
+            Instantiate(pointPopUp, gameObject.transform.position, gameObject.transform.rotation);
             if (rumble == false)
             {
                 _combo.comboCount++;

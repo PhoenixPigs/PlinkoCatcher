@@ -63,6 +63,10 @@ public class MoneyManager : MonoBehaviour
     public Button prestigeUpgrade;
     public float prestigeMultiplier;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource buySound;
+    [SerializeField] AudioClip chaChing;
+
 
     //public float currentValue;
     private void Start()
@@ -178,6 +182,7 @@ public class MoneyManager : MonoBehaviour
             //currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
             //ballValue = Mathf.Round(ballValue * 100f) / 100f;
             ballValueLevel++;
+            buySound.PlayOneShot(chaChing);
 
             if (prestigeLevel >= 1)
             {
@@ -198,6 +203,7 @@ public class MoneyManager : MonoBehaviour
             _ballSpawner.BallSpawnSpeed = Mathf.Round(_ballSpawner.BallSpawnSpeed * 100f) / 100f;
             currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
             spawnSpeedLevel++;
+            buySound.PlayOneShot(chaChing);
         }
     }
 
@@ -212,6 +218,7 @@ public class MoneyManager : MonoBehaviour
                 Destroy(Catcher22);
                 currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
                 catcherLevel++;
+                buySound.PlayOneShot(chaChing);
             }
             if (catcherLevel == 1)
             {
@@ -220,6 +227,7 @@ public class MoneyManager : MonoBehaviour
                 Destroy(Catcher12);
                 currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
                 catcherLevel++;
+                buySound.PlayOneShot(chaChing);
             }
         }
     }
