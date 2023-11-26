@@ -12,18 +12,11 @@ public class PointPopUp : MonoBehaviour
 
     private void Start()
     {
-        _mm = GetComponent<MoneyManager>();
-        combo = GetComponent<Combo>();
+        _mm = FindObjectOfType<MoneyManager>();
+        combo = FindObjectOfType<Combo>();
     }
     void Update()
     {
-        if (!combo.comboActive)
-        {
             popUp.text = "$" + _mm.ballValue;
-        }
-        else if (combo.comboActive)
-        {
-            popUp.text = "$" + _mm.ballValue * 1.5f;
-        }
     }
 }

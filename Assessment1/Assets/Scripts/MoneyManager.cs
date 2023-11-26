@@ -179,8 +179,8 @@ public class MoneyManager : MonoBehaviour
 
 
             currentMoney -= currentPrice;
-            //currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
-            //ballValue = Mathf.Round(ballValue * 100f) / 100f;
+            currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
+            ballValue = Mathf.Round(ballValue * 100f) / 100f;
             ballValueLevel++;
             buySound.PlayOneShot(chaChing);
 
