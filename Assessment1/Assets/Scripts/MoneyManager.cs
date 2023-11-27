@@ -29,12 +29,15 @@ public class MoneyManager : MonoBehaviour
     public int spawnSpeedLevel;
     public float spawnPrice;
     public float currentSpeed;
+    public Button spawnButton;
 
     [Header("Spawn Speed text")]
     [SerializeField] TMP_Text spawnText;
     [SerializeField] TMP_Text spawnPriceText;
+    [SerializeField] TMP_Text spawnUpgradeText;
 
     [Header("Catcher")]
+    [SerializeField] Button catcherButton;
     public Transform catcherSpawn;
     public GameObject Catcher1;
     public GameObject Catcher2;
@@ -50,6 +53,7 @@ public class MoneyManager : MonoBehaviour
     [Header("Catcher text")]
     [SerializeField] TMP_Text catcherText;
     [SerializeField] TMP_Text catcherPriceText;
+    [SerializeField] TMP_Text catcherUpgradeText;
     
     [Header("Combo")]
     public Combo _combo;
@@ -83,6 +87,7 @@ public class MoneyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (_combo.comboActive == false)
         {
             currentPrice = ballValuePrice;
@@ -127,17 +132,49 @@ public class MoneyManager : MonoBehaviour
 
         MoneyText.text = "$" + currentMoney;
 
+        if (_combo.comboActive)
+        {
+            ballValueText.color = Color.yellow;
+        }
+        else
+        {
+            ballValueText.color = Color.white;
+        }
         ballValueText.text = "$" + ballValue;
-        ballValueUpgradeText.text = "Cost : $" + currentPrice;
 
+        ballValueUpgradeText.text = "$" + currentPrice;
+
+  
+        if (spawnSpeedLevel == 19)
+        {
+            spawnPriceText.text = "MAX";
+            spawnUpgradeText.text = " ";
+        }
+        else
+        {
         spawnText.text = _ballSpawner.BallSpawnSpeed + "'s";
         spawnPriceText.text = "$" + spawnPrice;
+        }
 
+        if (catcherLevel == 3)
+        {
+            catcherPriceText.text = "MAX";
+            catcherUpgradeText.text = " ";
+        }
+        else
+        {
         catcherText.text = "level - " + catcherLevel;
         catcherPriceText.text = "$" + catcherPrice;
+        }
 
-
-
+        if (prestigeCost > currentMoney)
+        {
+            prestigeUpgrade.interactable = false;
+        }
+        else
+        {
+            prestigeUpgrade.interactable = true;
+        }
     }
     public void Prestige()
     {
@@ -196,6 +233,7 @@ public class MoneyManager : MonoBehaviour
     }
     public void UpgradeSpeed()
     {
+
         if (_ballSpawner.BallSpawnSpeed > 0.1f && spawnPrice < currentMoney)
         {
             _ballSpawner.BallSpawnSpeed -= 0.1f;
@@ -219,6 +257,7 @@ public class MoneyManager : MonoBehaviour
                 currentMoney = Mathf.Round(currentMoney * 100f) / 100f;
                 catcherLevel++;
                 buySound.PlayOneShot(chaChing);
+
             }
             if (catcherLevel == 1)
             {

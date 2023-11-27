@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
@@ -20,7 +21,6 @@ public class BallSpawner : MonoBehaviour
     private void Start()
     {
         Activated = true;
-        Debug.Log("Hi");
         StartCoroutine(SuperBallCooldown());
     }
     // Update is called once per frame
@@ -73,6 +73,7 @@ public class BallSpawner : MonoBehaviour
     }
     IEnumerator SuperballDuration()
     {
+
             Debug.Log("false");
             BallSpawnSpeed = -1;
             Debug.Log("-1");

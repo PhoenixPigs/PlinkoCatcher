@@ -16,6 +16,7 @@ public class NewCombo : MonoBehaviour
     [SerializeField] MeshRenderer combo10;
 
     [SerializeField] Material blank;
+    [SerializeField] Material newer;
     [SerializeField] Material colour1;
     [SerializeField] Material colour2;
     [SerializeField] Material colour3;

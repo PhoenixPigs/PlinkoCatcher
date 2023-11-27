@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 4680550624686658005}
   - component: {fileID: 753168346037955522}
   - component: {fileID: -4959908952860443110}
+  - component: {fileID: 2915254924527511846}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -241,3 +242,16 @@ MonoBehaviour:
   popUp: {fileID: 5690685603296711144}
   _mm: {fileID: 0}
   combo: {fileID: 0}
+--- !u!114 &2915254924527511846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438948364304949739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ebdd3bc65b8e34ab0522a6a213848a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 5690685603296711144}
