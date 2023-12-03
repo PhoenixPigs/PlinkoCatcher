@@ -10,6 +10,8 @@ public class BallDestroy : MonoBehaviour
     public MoneyManager _moneyManager;
 
     public GameObject deathParticleCurrent;
+    public AudioSource deathSound;
+    public AudioClip deathNoise;
     //public  rotate;
     public Combo _combo;
     public List<GameObject> _clean;
@@ -46,6 +48,7 @@ public class BallDestroy : MonoBehaviour
             //Instantiate(deathParticle, spawnLocation, Quaternion.Euler(Vector3.up));
             deathParticleCurrent = Instantiate(deathParticle, spawnLocation, transform.rotation);
             _clean.Add(deathParticleCurrent);
+            deathSound.PlayOneShot(deathNoise);
             //deathParticleCurrent.transform.rotation.y += 90;
             Destroy(other.gameObject);
 
