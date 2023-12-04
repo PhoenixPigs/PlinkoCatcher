@@ -74,7 +74,7 @@ public class Theme : MonoBehaviour
         }
     }
 
-    void Theme1()
+    public void Theme1()
     {
 
         Ball.color = Theme11;
@@ -83,7 +83,7 @@ public class Theme : MonoBehaviour
         Pegs.color = Theme13;
     }
 
-    void Theme2()
+    public void Theme2()
     {
 
         Ball.color = Theme21;
@@ -91,7 +91,7 @@ public class Theme : MonoBehaviour
         Back.color = Theme22;
         Pegs.color = Theme23;
     }
-    void Theme3()
+    public void Theme3()
     {
 
         Ball.color = Theme31;
@@ -99,7 +99,7 @@ public class Theme : MonoBehaviour
         Back.color = Theme32;
         Pegs.color = Theme33;
     }
-    void Theme4()
+    public void Theme4()
     {
 
         Ball.color = Theme41;
@@ -107,7 +107,7 @@ public class Theme : MonoBehaviour
         Back.color = Theme42;
         Pegs.color = Theme43;
     }
-    void Theme5()
+    public void Theme5()
     {
 
         Ball.color = Theme51;
