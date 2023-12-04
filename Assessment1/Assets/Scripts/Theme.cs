@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class Theme : MonoBehaviour
 {
@@ -11,20 +13,40 @@ public class Theme : MonoBehaviour
 
     public bool themea;
     public bool themeata;
+    public bool themit;
+    public bool thor;
+    public bool Nurple;
+    
 
 
     Color Theme11 = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     Color Theme12 = new Color(0f, 0f, 0f, 1.0f);
     Color Theme13 = new Color(0f, 0f, 0f, 1.0f);
 
-    Color Theme21 = new Color(0.4491811f, 0.6909288f, 0.9245283f, 1.0f);
-    Color Theme21E = new Color(0f, 0.4755965f, 0.9433962f, 1.0f);
-    Color Theme22 = new Color(0.4433962f, 0.3251897f, 0.2447045f, 1.0f);
-    Color Theme23 = new Color(0.8962264f, 0.4958815f, 0f, 1.0f);
+    Color Theme21 = new Color(0f, 0.4198113f, 0.8396226f, 1.0f);
+    Color Theme21E = new Color(0f, 0.5019608f, 1f, 1.0f);
+    Color Theme22 = new Color(0.2641509f, 0.2641509f, 0.2641509f, 1.0f);
+    Color Theme23 = new Color(0f, 0f, 0f, 1.0f);
+
+    Color Theme31 = new Color(1f, 0.612016f, 0f, 1.0f);
+    Color Theme31E = new Color(1f, 0.8444079f, 0f, 1.0f);
+    Color Theme32 = new Color(0.07744224f, 0.05669276f, 0.1320755f, 1.0f);
+    Color Theme33 = new Color(0.2461098f, 0.2026077f, 0.2735848f, 1.0f);
+
+    Color Theme41 = new Color(1f, 0f, 0.01960802f, 1.0f);
+    Color Theme41E = new Color(0.5754717f, 0.01579726f, 0f, 1.0f);
+    Color Theme42 = new Color(0.8773585f, 0.3931559f, 0.4154758f, 1.0f);
+    Color Theme43 = new Color(1f, 1f, 1f, 1.0f);
+
+    Color Theme51 = new Color(0.4043819f, 0f, 0.9245283f, 1.0f);
+    Color Theme51E = new Color(0.3690425f, 0f, 0.9528302f, 1.0f);
+    Color Theme52 = new Color(0f, 0f, 0f, 1.0f);
+    Color Theme53 = new Color(0.01438676f, 0f, 0.03773582f, 1.0f);
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -38,24 +60,60 @@ public class Theme : MonoBehaviour
         {
             Theme2();
         }
+        if (themit)
+        {
+            Theme3();
+        }
+        if (thor)
+        {
+            Theme4();
+        }
+        if (Nurple)
+        {
+            Theme5();
+        }
     }
 
     void Theme1()
     {
-        Debug.Log("Setting Theme 1 colors");
-        Ball.SetColor("_Color", Theme11);
+
+        Ball.color = Theme11;
         Ball.SetColor("_EmissiveColor", Theme11);
-        Back.SetColor("_Color", Theme12);
-        Pegs.SetColor("_Color", Theme13);
-        Debug.Log(Ball.color);
+        Back.color = Theme12;
+        Pegs.color = Theme13;
     }
 
     void Theme2()
     {
-        Debug.Log("Setting Theme 2 colors");
-        Ball.SetColor("_Color", Theme21);
+
+        Ball.color = Theme21;
         Ball.SetColor("_EmissiveColor", Theme21E);
-        Back.SetColor("_Color", Theme22);
-        Pegs.SetColor("_Color", Theme23);
+        Back.color = Theme22;
+        Pegs.color = Theme23;
     }
+    void Theme3()
+    {
+
+        Ball.color = Theme31;
+        Ball.SetColor("_EmissiveColor", Theme31E);
+        Back.color = Theme32;
+        Pegs.color = Theme33;
+    }
+    void Theme4()
+    {
+
+        Ball.color = Theme41;
+        Ball.SetColor("_EmissiveColor", Theme41E);
+        Back.color = Theme42;
+        Pegs.color = Theme43;
+    }
+    void Theme5()
+    {
+
+        Ball.color = Theme51;
+        Ball.SetColor("_EmissiveColor", Theme51E);
+        Back.color = Theme52;
+        Pegs.color = Theme53;
+    }
+
 }

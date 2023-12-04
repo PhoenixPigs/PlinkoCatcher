@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e545b4967835289468eba25982ed0552, type: 2}
+  - {fileID: 2100000, guid: 8ec4ad85eeae7164993fa9a21faf29bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,9 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71926e64566bc5b4480e08fc03c2a62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PegOn: {fileID: 2100000, guid: bfba13031eddf044989bc25e25ff6199, type: 2}
+  PegOn: {fileID: 2100000, guid: c2d051ef36210784285e8ad81fc00e58, type: 2}
   SuperPegOn: {fileID: 2100000, guid: afcdc7e03d8ca6c408c31fa718306e77, type: 2}
-  PegOff: {fileID: 2100000, guid: e545b4967835289468eba25982ed0552, type: 2}
+  PegOff: {fileID: 2100000, guid: 8ec4ad85eeae7164993fa9a21faf29bf, type: 2}
   PegRenderer: {fileID: 0}
   PegEnabled: 0
   pop: {fileID: 0}
