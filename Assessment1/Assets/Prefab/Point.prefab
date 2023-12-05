@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 753168346037955522}
   - component: {fileID: -4959908952860443110}
   - component: {fileID: 2915254924527511846}
+  - component: {fileID: 6837437286090710053}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -255,3 +256,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5690685603296711144}
+--- !u!114 &6837437286090710053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438948364304949739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e450d91aaa01945b03a04fe0d420cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

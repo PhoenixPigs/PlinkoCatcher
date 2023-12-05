@@ -46,9 +46,9 @@ public class BallDestroy : MonoBehaviour
             //Vector3 spawnLocation = new Vector3(other.gameObject.transform.position.x, deathParticle.gameObject.transform.position.y + 10, deathParticle.gameObject.transform.position.z);
             Vector3 spawnLocation = new Vector3(other.gameObject.transform.position.x, deathParticle.gameObject.transform.position.y - 0.4f, deathParticle.gameObject.transform.position.z + 1);
             //Instantiate(deathParticle, spawnLocation, Quaternion.Euler(Vector3.up));
-            deathParticleCurrent = Instantiate(deathParticle, spawnLocation, transform.rotation);
-            _clean.Add(deathParticleCurrent);
-            deathSound.PlayOneShot(deathNoise);
+            //deathParticleCurrent = Instantiate(deathParticle, spawnLocation, transform.rotation);
+            //_clean.Add(deathParticleCurrent);
+            //deathSound.PlayOneShot(deathNoise);
             //deathParticleCurrent.transform.rotation.y += 90;
             Destroy(other.gameObject);
 
@@ -57,17 +57,17 @@ public class BallDestroy : MonoBehaviour
                 Debug.Log("False");
             _combo.comboCount = 0;
             }
-            StartCoroutine(ParticleDestroy());
+            //StartCoroutine(ParticleDestroy());
         }
 
     }
     IEnumerator ParticleDestroy()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         
         foreach (GameObject i in _clean)
         {
-            Destroy(i);
+            Destroy(deathParticleCurrent);
         }
     }
 }

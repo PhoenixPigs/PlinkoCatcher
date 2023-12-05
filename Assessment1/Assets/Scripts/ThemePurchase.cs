@@ -13,25 +13,25 @@ public class ThemePurchase : MonoBehaviour
     public Button button01;
     bool pressed;
 
-    int price1 = 5000;
+    int price1 = 10000;
 
     public GameObject button2;
     public Button button02;
     bool pressed2;
 
-    int price2 = 10000;
+    int price2 = 20000;
 
     public GameObject button3;
     public Button button03;
     bool pressed3;
 
-    int price3 = 15000;
+    int price3 = 1000000;
 
     public GameObject button4;
     public Button button04;
     bool pressed4;
 
-    int price4 = 20000;
+    int price4 = 2000000;
 
     // Start is called before the first frame update
     void Start()

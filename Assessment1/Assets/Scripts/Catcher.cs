@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Animations;
+using Unity.VisualScripting;
 
 public class Catcher : MonoBehaviour
 {
@@ -17,12 +18,17 @@ public class Catcher : MonoBehaviour
     [SerializeField] AudioSource pop;
     [SerializeField] AudioClip popAudio;
     [SerializeField] AudioClip superPop;
+    public List<GameObject> _clean;
+    public GameObject currentPopUp;
+
+    [SerializeField] GameObject _empty;
 
     public void Awake()
     {
         moneyManager = FindObjectOfType<MoneyManager>();
         _combo = FindObjectOfType<Combo>();
         _ballSpawner = FindObjectOfType<BallSpawner>();
+        List<GameObject> _clean = new List<GameObject>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,9 +36,9 @@ public class Catcher : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             Destroy(collision.gameObject);
+            Instantiate(pointPopUp, gameObject.transform.position, gameObject.transform.rotation);
             moneyManager.currentMoney += moneyManager.ballValue;
             moneyManager.currentMoney = Mathf.Round(moneyManager.currentMoney * 100f) / 100f;
-            Instantiate(pointPopUp, gameObject.transform.position, gameObject.transform.rotation);
             if (!_combo.comboActive)
             {
                 pop.PlayOneShot(popAudio);
@@ -47,7 +53,7 @@ public class Catcher : MonoBehaviour
             {
             _combo.comboCount++;
             }
-            BounceBool();
+            StartCoroutine(PointDeath());
         }
         if (collision.gameObject.tag == "SuperBall")
         {
@@ -68,22 +74,19 @@ public class Catcher : MonoBehaviour
             {
                 _combo.comboCount++;
             }
-            BounceBool();
             _ballSpawner.superDuperActivated = true;
         }
     }
-    void BounceBool()
-    {
-        _combo.comboBounce.SetTrigger("E");
-        //_combo.comboBounce.ResetTrigger("E");
 
 
-    }
-
-    IEnumerator BounceWait()
+    IEnumerator PointDeath()
     {
         yield return new WaitForSeconds(1);
 
+        foreach (GameObject i in _clean)
+        {
+            Destroy(currentPopUp);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -94,13 +97,13 @@ public class Catcher : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow))
         {
 
             gameObject.transform.position = gameObject.transform.position + gameObject.transform.right * speed * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) | Input.GetKey(KeyCode.RightArrow))
         {
 
             gameObject.transform.position = gameObject.transform.position + gameObject.transform.right * -speed * Time.deltaTime;

@@ -171,6 +171,9 @@ MonoBehaviour:
   pop: {fileID: 860977491923897551}
   popAudio: {fileID: 8300000, guid: 616c45494bb30764a83c44b74f9d3bf1, type: 3}
   superPop: {fileID: 8300000, guid: a7c8a5a5dde16b5489646dcad6be3f40, type: 3}
+  _clean: []
+  currentPopUp: {fileID: 0}
+  _empty: {fileID: 0}
 --- !u!82 &860977491923897551
 AudioSource:
   m_ObjectHideFlags: 0
@@ -180,7 +183,7 @@ AudioSource:
   m_GameObject: {fileID: 595399743633053171}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 31c2f76257f153b4a9832a2170a1edd0, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.25
